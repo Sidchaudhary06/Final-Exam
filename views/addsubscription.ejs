@@ -1,0 +1,32 @@
+<!-- addsubscription.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Pass a JavaScript variable to a partial in EJS -->
+  <%- include('partials/head.ejs', { title: "Add Subscription" }) %>
+
+  <body>
+    <%- include('partials/navbar') %>
+
+    <div class="content">
+      <div class="create">
+        <h2>Add a New Subscription</h2>
+        <form action="/addSubscription" method="POST">
+
+         
+          <label>Plan:</label
+          ><input type="text" value="" id="plan" name="plan" required /><br>
+
+          <label for="price">Price:</label>
+          <input type="number" id="price" name="price" required /><br />
+
+          <label>Duration:</label
+            ><input type="text" value="" id="duration" name="duration" required /><br>
+
+          <button type="submit">Add Subscription</button>
+        </form>
+      </div>
+    </div>
+
+    <%- include('partials/footer') %>
+  </body>
+</html>

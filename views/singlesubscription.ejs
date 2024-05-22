@@ -1,0 +1,63 @@
+<!-- Define a function to render the subscription -->
+<% function renderSubscription(subscription) { %>
+  <div class="item-details">
+    <article>
+     
+      <h2>Plan: <%= subscription.plan %></h2>
+      <p>
+        <strong>Price:</strong> <%= subscription.price %><br />
+        <strong>Duration:</strong> <%= subscription.duration %><br>
+      </p>
+  
+      <!-- Update button -->
+      <form
+        class="action-form"
+        method="GET"
+        action="/single-subscription/update/<%= subscription._id %>"
+      >
+        <button type="submit" class="update">Update</button>
+      </form>
+  
+      <!-- Delete button -->
+      <form
+        class="action-form"
+        method="POST"
+        action="/single-subscription/<%= subscription._id %>?_method=DELETE"
+      >
+        <button type="submit">Delete</button>
+      </form>
+    </article>
+  </div>
+  <% } %>
+
+    
+  <% 
+  function formatDate(dateString) {
+      const date = new Date(dateString);
+      // Format the date as desired (e.g., YYYY-MM-DD)
+      const formattedDate = date.toLocaleDateString('fi-FI', { year: 'numeric', month: 'long', day: 'numeric' });
+      return formattedDate;
+  } 
+  %>
+
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Pass a JavaScript variable to a partial in EJS -->
+  <%- include('partials/head.ejs', { title: subscription.title }) %>
+  <body>
+    <%- include('partials/navbar.ejs') %>
+    
+    <%- include('partials/single.ejs') %>
+    <div class="content">
+      <div class="home">
+        <div class="item-list">
+          <% if (subscription) { %> <%= renderSubscription(subscription) %> <% } else { %>
+          <p>No subscription found.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

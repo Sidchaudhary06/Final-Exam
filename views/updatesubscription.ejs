@@ -1,0 +1,29 @@
+<!-- updatesubscription.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Pass a JavaScript variable to a partial in EJS -->
+  <%- include('partials/head.ejs', { title: "Update page" }) %>
+<body>
+  <%- include('partials/navbar') %>
+
+  <div class="content">
+    <div class="update">
+      <h2>Update Subscription</h2>
+      <form action="/single-subscription/<%= subscription._id %>?_method=PUT" method="POST">
+        <label>Plan:</label>
+        <input type="text" value="<%= subscription.plan %>" id="plan" name="plan" required />
+
+        <label>Price:</label>
+        <input type="number" value="<%= subscription.price %>" id="price" name="price" required />
+
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration" required value="<%= subscription.duration %>" />
+
+        <button type="submit">Update Subscription</button>
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>
