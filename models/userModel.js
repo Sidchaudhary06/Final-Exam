@@ -14,6 +14,26 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  firstName: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  phoneNumber: {
+    type: Boolean,
+    required: true,
+    unique: true,
+  },
+  role: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   age: {
     type: Date,
   },

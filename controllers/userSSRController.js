@@ -49,10 +49,10 @@ const getSignupPage = async (req, res) => {
 
 // signup a user
 const postSignup = async (req, res) => {
-  const { email, password, age, occupation } = req.body;
+  const { email, password, firstName, lastName, phoneNumber, role, occupation } = req.body;
 
   try {
-    const user = await User.signup(email, password, age, occupation);
+    const user = await User.signup(email, password, firstName, lastName, phoneNumber, role, occupation);
 
     // create a token
     const token = createToken(user._id);
